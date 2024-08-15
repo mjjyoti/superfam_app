@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:superfam_app/db_helper.dart';
 
 void main() {
@@ -18,12 +17,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -60,15 +61,15 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TextField(
                 controller: keyController,
-                decoration: InputDecoration(labelText: 'Key'),
+                decoration: const InputDecoration(labelText: 'Key'),
               ),
               TextField(
                 controller: valueController,
-                decoration: InputDecoration(labelText: 'Value'),
+                decoration: const InputDecoration(labelText: 'Value'),
               ),
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -77,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Cancel'),
+                    child: const Text('Cancel'),
                   ),
                   ElevatedButton(
                     onPressed: () async {
@@ -92,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Save'),
+                    child: const Text('Save'),
                   ),
                 ],
               )
@@ -113,10 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amberAccent,
-        title: Text('SuperFam App'),
+        title: const Text('SuperFam App'),
       ),
       body: keyValues.isEmpty
-          ? Center(child: Text('No key-value pairs added.'))
+          ? const Center(child: Text('No key-value pairs added.'))
           : ListView.builder(
               itemCount: keyValues.length,
               itemBuilder: (context, index) {
@@ -127,19 +128,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListTile(
                     title: Text(
                       kv['key'],
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                     subtitle: Text(
                       kv['value'],
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                     leading: Text(
                       kv['name'],
-                      style: TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black),
                     ),
                     trailing: IconButton(
                         onPressed: () => _deleteKeyValue(kv['id']),
-                        icon: Icon(Icons.delete)),
+                        icon: const Icon(Icons.delete)),
                   ),
                 );
               },
@@ -147,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amberAccent,
         onPressed: _showBottomSheet,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
